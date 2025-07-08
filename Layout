@@ -1,0 +1,53 @@
+Device Layout
+Location	Devices Needed
+Building A	1 Router, 1 L3 Switch, PCs for Admin + Business
+Building B	2 L2 Switches, PCs for Engineering + Art
+Building C	1 L2 Switch, Servers, PCs for Labs
+Smaller Campus	1 Router, 2 L2 Switches, PCs for Staff + Students
+Cloud	1 Cloud device with static IP for Email Server
+
+🏢 Main Campus
+🔹 Building A (Admin + Faculty of Business)
+•	Devices:
+  • 1 Router (R1)
+  •	1 Layer 3 Switch (L3-SW-A)
+  • 1 PC each for Management, HR, Finance, Business
+•	VLANs:
+  • VLAN 10: Management
+  • VLAN 20: HR
+  • VLAN 30: Finance
+  • VLAN 40: Business
+•	DHCP: Enabled on R1 for VLANs 10–40
+
+🔹 Building B (Engineering + Art)
+•	Devices:
+  •	1 Layer 2 Switch (SW-B)
+  • 1 PC each for Engineering and Art
+•	VLANs:
+  •	VLAN 50: Engineering
+  •	VLAN 60: Art
+
+🔹 Building C (IT + Labs + Servers)
+•	Devices:
+  •	1 Layer 2 Switch (SW-C)
+  •	1 PC for IT, 1 for Student Lab
+  •	1 Web Server, 1 File Server, 1 DNS Server
+•	VLANs:
+  •	VLAN 70: Student Labs
+  •	VLAN 80: IT
+
+☁️ Cloud
+•	Device: 1 Cloud with static IP (e.g., 8.8.8.8)
+•	Purpose: External Email Server
+
+🏥 Smaller Campus
+🔹 Faculty of Health and Sciences
+•	Devices:
+  •	1 Router (R2)
+  •	2 Layer 2 Switches (SW-HS1, SW-HS2)
+  •	1 PC for Staff, 1 for Student Lab
+•	VLANs:
+  •	VLAN 90: Staff
+  •	VLAN 100: Student Labs
+
+
