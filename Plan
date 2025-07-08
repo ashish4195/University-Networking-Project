@@ -1,0 +1,54 @@
+🌐 Overview/Planning
+University has two campuses:
+•	Main Campus with 3 buildings (A, B, C)
+•	Smaller Campus with the Faculty of Health and Sciences
+Each department/faculty must be on a separate IP network using VLANs, with RIPv2 for routing and DHCP for dynamic IP assignment in Building A.
+
+🧱 Network Topology Plan
+🏢 Main Campus
+1. Building A
+•	Departments: Management, HR, Finance (Admin Staff) + Faculty of Business
+•	VLANs:
+  •	VLAN 10: Management
+  •	VLAN 20: HR
+  •	VLAN 30: Finance
+  •	VLAN 40: Faculty of Business
+•	DHCP: Router-based DHCP for all VLANs in this building
+
+2. Building B
+•	Faculties: Engineering/Computing, Art & Design
+•	VLANs:
+  •	VLAN 50: Engineering/Computing
+  •	VLAN 60: Art & Design
+
+3. Building C
+•	Students' Labs + IT Department
+•	VLANs:
+  •	VLAN 70: Student Labs
+  •	VLAN 80: IT Department
+•	Servers:
+  •	Web Server
+  •	FTP Server
+  •	DNS Server (optional)
+
+🌩️ Cloud
+•	External Email Server (reachable via static route)
+
+🏥 Smaller Campus
+•	Faculty of Health and Sciences
+  •	VLAN 90: Staff
+  •	VLAN 100: Student Labs
+
+🔧 Configuration Requirements
+🛠️ Core Devices
+•	Routers: 2 (one per campus)
+•	Switches: Layer 3 switch in Building A; Layer 2 switches in other buildings
+•	Routing: RIPv2 between routers; static route to cloud email server
+•	DHCP: Enabled on router in Building A, B, C for VLANs 10–80
+•	DHCP: Enabled on router in Small Campus for VLANs 90-100
+
+🔐 Security & VLAN Setup
+•	Assign ports to VLANs
+•	Configure trunk links between switches
+•	Set native VLANs consistently
+•	Enable port security (optional)
