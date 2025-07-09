@@ -1,0 +1,207 @@
+VLAN Configuration (on all switches)
+  Switch(config)# vlan 10
+  Switch(config-vlan)# name Management
+  Switch(config)# vlan 20
+  Switch(config-vlan)# name HR
+  Switch(config)# vlan 30
+  Switch(config-vlan)# name Finance
+  Switch(config)# vlan 40
+  Switch(config-vlan)# name Business
+  Switch(config)# vlan 50
+  Switch(config-vlan)# name Engineering
+  Switch(config)# vlan 60
+  Switch(config-vlan)# name Art
+  Switch(config)# vlan 70
+  Switch(config-vlan)# name Student_Lab
+  Switch(config)# vlan 80
+  Switch(config-vlan)# name IT
+  Switch(config)# vlan 90
+  Switch(config-vlan)# name Health_Staff
+  Switch(config)# vlan 100
+  Switch(config-vlan)# name Health_Students
+
+Assign VLANs to Access Port
+L-3 switch
+  Switch(config)# interface g1/0/2
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 10
+  Switch(config)# interface g1/0/3
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 10
+  Switch(config)# interface g1/0/4
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 20
+  Switch(config)# interface g1/0/5
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 20
+  Switch(config)# interface g1/0/6
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 30
+  Switch(config)# interface g1/0/7
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 30
+  Switch(config)# interface g1/0/8
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 40
+  Switch(config)# interface g1/0/9
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 40
+L-2 switch
+  Switch(config)# interface fa0/2
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 50
+  Switch(config)# interface fa0/3
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 50
+  Switch(config)# interface fa0/4
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 60
+  Switch(config)# interface fa0/5
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 60
+L-2 switch
+  Switch(config)# interface fa0/2
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 70
+  Switch(config)# interface fa0/3
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 70
+  Switch(config)# interface fa0/4
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 80
+  Switch(config)# interface fa0/5
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 80
+L-2 switch
+  Switch(config)# interface fa0/2
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 90
+  Switch(config)# interface fa0/3
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 90
+  Switch(config)# interface fa0/2
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 100
+  Switch(config)# interface fa0/3
+  Switch(config-if)# switchport mode access
+  Switch(config-if)# switchport access vlan 100
+
+Trunk Configuration (between switches and routers)
+Main campus area
+L-3 switch
+  Switch(config)# int  g1/0/1
+  Switch(config-if)# switchport trunk encapsulation dot1q
+  Switch(config-if)# switchport mode trunk
+L-2 switch
+  Switch(config)# int  fa0/1
+  Switch(config-if)# switchport trunk mode
+L-2 switch
+  Switch(config)# int  fa0/1
+  Switch(config-if)# switchport trunk mode
+
+Small campus area
+L-2 switch
+  Switch(config)# int  fa0/1
+  Switch(config-if)# switchport trunk mode
+L-2 switch
+  Switch(config)# int  fa0/1
+  Switch(config-if)# switchport trunk mode
+
+Router-on-a-Stick (R1 for Building A)
+  Router(config)# interface g0/0.10
+  Router(config-subif)# encapsulation dot1Q 10
+  Router(config-subif)# ip address 192.168.10.1 255.255.255.0
+  Router(config)# interface g0/0.20
+  Router(config-subif)# encapsulation dot1Q 20
+  Router(config-subif)# ip address 192.168.20.1 255.255.255.0
+  Router(config)# interface g0/0.30
+  Router(config-subif)# encapsulation dot1Q 30
+  Router(config-subif)# ip address 192.168.30.1 255.255.255.0
+  Router(config)# interface g0/0.40
+  Router(config-subif)# encapsulation dot1Q 40
+  Router(config-subif)# ip address 192.168.40.1 255.255.255.0
+Router-on-a-Stick (R1 for Building B)
+  Router(config)# interface g0/1.50
+  Router(config-subif)# encapsulation dot1Q 50
+  Router(config-subif)# ip address 192.168.50.1 255.255.255.0
+  Router(config)# interface g0/1.60
+  Router(config-subif)# encapsulation dot1Q 60
+  Router(config-subif)# ip address 192.168.60.1 255.255.255.0
+Router-on-a-Stick (R1 for Building C)
+  Router(config)# interface g0/2.70
+  Router(config-subif)# encapsulation dot1Q 70
+  Router(config-subif)# ip address 192.168.70.1 255.255.255.0
+  Router(config)# interface g0/2.80
+  Router(config-subif)# encapsulation dot1Q 80
+  Router(config-subif)# ip address 192.168.80.1 255.255.255.0
+Router-on-a-Stick (R2)
+  Router(config)# interface g0/0.90
+  Router(config-subif)# encapsulation dot1Q 90
+  Router(config-subif)# ip address 192.168.90.1 255.255.255.0
+  Router(config)# interface g0/1.100
+  Router(config-subif)# encapsulation dot1Q 100
+  Router(config-subif)# ip address 192.168.100.1 255.255.255.0
+
+DHCP Configuration 
+  Router(config)# ip dhcp pool VLAN10
+  Router(dhcp-config)# network 192.168.10.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.10.1
+  Router(config)# ip dhcp pool VLAN20
+  Router(dhcp-config)# network 192.168.20.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.20.1
+  Router(config)# ip dhcp pool VLAN30
+  Router(dhcp-config)# network 192.168.30.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.30.1
+  Router(config)# ip dhcp pool VLAN40
+  Router(dhcp-config)# network 192.168.40.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.40.1
+  Router(config)# ip dhcp pool VLAN50
+  Router(dhcp-config)# network 192.168.50.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.50.1
+  Router(config)# ip dhcp pool VLAN60
+  Router(dhcp-config)# network 192.168.60.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.60.1
+
+  Router(config)# ip dhcp pool VLAN70
+  Router(dhcp-config)# network 192.168.70.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.70.1
+  Router(config)# ip dhcp pool VLAN80
+  Router(dhcp-config)# network 192.168.80.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.80.1
+
+  Router(config)# ip dhcp pool VLAN90
+  Router(dhcp-config)# network 192.168.90.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.90.1
+  Router(config)# ip dhcp pool VLAN100
+  Router(dhcp-config)# network 192.168.100.0 255.255.255.0
+  Router(dhcp-config)# default-router 192.168.100.1
+
+RIPv2 Configuration (on both routers R1 and R2 )
+  Router(config)# router rip
+  Router(config-router)# version 2
+  Router(config-router)# no auto-summary
+  Router(config-router)# network 192.168.10.0
+  Router(config-router)# network 192.168.20.0
+  Router(config-router)# network 192.168.30.0
+  Router(config-router)# network 192.168.40.0
+  Router(config-router)# network 192.168.50.0
+  Router(config-router)# network 192.168.60.0
+  Router(config-router)# network 192.168.70.0
+  Router(config-router)# network 192.168.80.0
+  Router(config-router)# network 192.168.90.0
+  Router(config-router)# network 192.168.100.0
+
+Static Route to Cloud Email Serve
+  Router(config)# ip add 192.168.11.1 255.255.255.0
+
+
+
+
+
+
+
+
+
+
+
+
